@@ -6,7 +6,7 @@ let card = {
 
 
 function createCard(obj) {
-    const body = document.body
+    const main = document.body.querySelector("section")
     const card = document.createElement('div')
     card.className = "card"
 
@@ -20,8 +20,11 @@ function createCard(obj) {
     const p = document.createElement('p')
     p.innerText = obj.keywords
 
-    body.append(card)
+    main.append(card)
     card.append(emoji, h2, p)
 }
 
+createCard(card)
+createCard(card)
+createCard(card)
 createCard(card)
