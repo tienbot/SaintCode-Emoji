@@ -1,13 +1,23 @@
 import {data as emoji} from './data.js'
 
-let card = {
-    emoji: '💯',
-    title: '100',
-    keywords: 'Hundred, points, symbol, wow, win, perfect, parties',
+function renerCard(data){
+    data.forEach(el => createCard(el))
+    // data.forEach(el => checkKeywords(el))
 }
 
-function renerCard(data){
-    data.forEach(el => createCard(el));
+
+function checkKeywords(keyword){
+    let words = keyword.toLowerCase().split(' ')
+    let words2 = []
+    for(let i=0; i<words.length; i++){
+        if(!words2.includes(words[i])){
+            words2.push(words[i])
+        }
+        words2.join('-')
+    }
+
+    // console.log(words2)
+    return words2
 }
 
 function createCard(obj) {
@@ -23,11 +33,11 @@ function createCard(obj) {
     h2.innerText = obj.title
 
     const p = document.createElement('p')
-    p.innerText = obj.keywords
+    p.innerText = checkKeywords(obj.keywords)
+    // p.innerText = obj.keywords
 
     main.append(card)
     card.append(emoji, h2, p)
 }
 
 renerCard(emoji)
-// createCard(card)
