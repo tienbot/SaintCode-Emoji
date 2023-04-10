@@ -1,18 +1,13 @@
-import {data as emoji} from './data.js'
+// import {data as emoji} from './data.js'
+const emoji = await fetch("https://emoji.ymatuhin.workers.dev/")
+const data = await emoji.json()
 
-renderCard(emoji)
-randomFavicon()
+renderCard(data)
+randomFavicon(data)
 
 const card = Object.values(document.querySelectorAll('.card'))
 const input = document.querySelector('input')
 const h1 = document.querySelector('h1')
-
-function randomFavicon(){
-    let randomNumb = Math.floor(Math.random() * emoji.length) + 1
-    let randomImg = emoji[randomNumb].symbol
-    let title = document.querySelector('title')
-    title.innerHTML = `Emoji ${randomImg}`
-}
 
 input.addEventListener('change', (event) => {
     hideCard(card, true)
@@ -30,6 +25,13 @@ input.addEventListener('change', (event) => {
 h1.addEventListener('click', () => {
     hideCard(card, false)
 })
+
+function randomFavicon(emoji){
+    let randomNumb = Math.floor(Math.random() * emoji.length) + 1
+    let randomImg = emoji[randomNumb].symbol
+    let title = document.querySelector('title')
+    title.innerHTML = `Emoji ${randomImg}`
+}
 
 function renderCard(data){
     data.forEach(el => {
