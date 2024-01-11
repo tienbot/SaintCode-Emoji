@@ -1,6 +1,6 @@
-import {data as emoji} from './data.js'
-//const emoji = await fetch("https://emoji.ymatuhin.workers.dev/")
-//const data = await emoji.json()
+import { data } from './data.js';
+// const emoji = await fetch("https://emoji.ymatuhin.workers.dev/")
+// const data = await emoji.json()
 
 renderCard(data);
 randomFavicon(data);
